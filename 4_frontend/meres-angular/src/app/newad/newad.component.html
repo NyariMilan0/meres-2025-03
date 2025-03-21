@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h2>Új hirdetés feladása</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Kategória</label>
+        <select class="form-control" [(ngModel)]="newOffer.kategoriaId" name="kategoriaId" required>
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.megnevezes }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Leírás</label>
+        <textarea class="form-control" [(ngModel)]="newOffer.leiras" name="leiras" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Hirdetés dátuma</label>
+        <input class="form-control" type="text" [(ngModel)]="newOffer.hirdetesDatuma" name="hirdetesDatuma" readonly>
+      </div>
+      <div class="form-group">
+        <label>Tehermentes</label>
+        <input type="checkbox" [(ngModel)]="newOffer.tehermentes" name="tehermentes">
+      </div>
+      <div class="form-group">
+        <label>Kép URL</label>
+        <input class="form-control" type="text" [(ngModel)]="newOffer.kepUrl" name="kepUrl" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Küldés</button>
+    </form>
+    <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+  </div>
